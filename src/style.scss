@@ -1,0 +1,296 @@
+@import './variables';
+
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+
+.wp-block-fourmi-e-galerie {
+	// overflow-x: scroll;
+	// height: 400px;
+	// padding: 0 0 20px 0;
+	padding: 0 0 0 0;
+	margin: 0 -40px -20px -20px;
+
+	.wrap-presentation {
+		visibility: hidden;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		z-index: 100;
+		background-color: rgba(250, 250, 250, 0);
+
+		transition: visibility 0s, background-color .33s ease .25s;
+		transition: visibility 0s .25s, background-color .33s ease;
+
+		&.ouvert {
+			visibility: visible;
+			transition: visibility 0s, background-color .33s ease .25s;
+			// transition: visibility 0s .25s, background-color .33s ease;
+
+
+
+			.content {
+				display: block;
+				height: 100%;
+
+				figure {
+					display: grid;
+					position: relative;
+					margin: 0 auto;
+					grid-template-columns: minmax(20vw, auto);
+					grid-template-rows: 1f auto;
+					width: fit-content;
+
+					img {
+						display: block;
+						display: block;
+						max-width: 100%;
+						max-height: 100vh;
+
+						width: auto;
+						height: auto;
+
+						margin: 0 auto;
+					}
+
+					figcaption {
+						margin: 0 auto;
+						padding: 20px;
+						min-width: calc(100% - 40px);
+						// max-width: fit-content;
+						width: min-content;
+						// background-color: red;
+					}
+				}
+			}
+
+		}
+	}
+
+	.galerie-wrap {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 30vw));
+
+		grid-template-rows: 1fr;
+		// grid-template-columns: repeat(auto-fit, 75vw);
+
+		// @media (min-width: map-get($breakpoints, md)) {
+		// 	grid-template-columns: repeat(auto-fit, 45vw);
+		// }
+
+		// @media (min-width: map-get($breakpoints, xl)) {
+		// 	grid-template-columns: repeat(auto-fit, 35vw);
+		// }
+
+		gap: 20px;
+		// max-width: 100%;
+		padding: 0 20px 40px;
+
+		.wp-block-fourmi-e-image {
+			box-sizing: border-box;
+
+
+
+			&:hover {
+
+				// border-left: .5rem solid ;
+				// border-bottom: .5rem solid ;
+
+				cursor: pointer;
+
+				figcaption {
+					margin-left: 10px
+				}
+			}
+
+			figcaption {
+				transition: margin .25s ease;
+				margin-left: 0;
+			}
+
+			img {
+				margin: 0;
+
+				@media (min-width: map-get($breakpoints, md)) {
+					margin: 0;
+				}
+
+				/*&.hauteur {
+				&-petite {
+					height: 100px;
+
+					@media (min-width: map-get($breakpoints, md)) {
+						height: 150px;
+					}
+
+					@media (min-width: map-get($breakpoints, xl)) {
+						height: 200px;
+					}
+				}
+
+				&-moyenne {
+					height: 300px;
+
+					@media (min-width: map-get($breakpoints, md)) {
+						height: 350px;
+					}
+
+					@media (min-width: map-get($breakpoints, xl)) {
+						height: 400px;
+					}
+
+				}
+
+				&-grande {
+					height: 500px;
+
+					@media (min-width: map-get($breakpoints, md)) {
+						height: 550px;
+					}
+
+					@media (min-width: map-get($breakpoints, xl)) {
+						height: 600px;
+					}
+				}
+			}*/
+			}
+		}
+	}
+}
+
+$colorBases: "blanc",
+"turquoise",
+"indigo",
+"corail";
+
+$colorShades: "light",
+"highlight",
+"base",
+"dark",
+"darker"
+;
+
+$colorScheme: (turquoise-base : $turquoise-base,
+	turquoise-highlight : $turquoise-highlight,
+	turquoise-light : $turquoise-light,
+	turquoise-dark : $turquoise-dark,
+	turquoise-darker: $turquoise-darker,
+
+	indigo-base : $indigo-base,
+	indigo-highlight : $indigo-highlight,
+	indigo-light : $indigo-light,
+	indigo-dark : $indigo-dark,
+	indigo-darker: $indigo-darker,
+
+	corail-base : $corail-base,
+	corail-highlight : $corail-highlight,
+	corail-light : $corail-light,
+	corail-dark : $corail-dark,
+	corail-darker: $corail-darker,
+);
+
+@each $color in $colorBases {
+
+	@if $color==blanc {
+		.bg-#{$color} {
+			&>.wp-block-fourmi-e-galerie {
+				.os-theme-fourmi-e.os-host-transition>.os-scrollbar-horizontal>.os-scrollbar-track>.os-scrollbar-handle {
+					background: $corail-base;
+
+
+					&:hover {
+						background: $corail-highlight;
+					}
+				}
+			}
+		}
+	}
+
+	@else {
+		@each $shade in $colorShades {
+			$i: index($colorShades, $shade);
+
+			$a: 1;
+			$h: 1;
+
+			@if($i + 2 > length($colorShades)) {
+				$a: $i - 3;
+			}
+
+			@else {
+				$a: $i + 2;
+			}
+
+			@if($i + 1 > length($colorShades)) {
+				$h: 1;
+			}
+
+			@else {
+				$h: $i + 1;
+			}
+
+			.bg-#{$color}-#{$shade} {
+				&>.wp-block-fourmi-e-galerie {
+
+					.wp-block-fourmi-e-image {
+						border-left: 0 solid;
+						border-bottom: 0 solid;
+
+						transition: border .33s ease;
+						border-color: map-get($colorScheme, '#{$color}-#{nth($colorShades,$a)}');
+
+						&:hover {
+							border-left: 0.5rem solid;
+							border-bottom: 0.5rem solid;
+
+							border-color: map-get($colorScheme, '#{$color}-#{nth($colorShades,$a)}');
+
+						}
+					}
+
+					.wrap-presentation {
+						&.ouvert {
+							// background-color: rgba(200, 0, 0, 0.5);
+							background-color: rgba(map-get($colorScheme, '#{$color}-#{nth($colorShades,$i)}'), .84);
+							// transition: visibility 0s .25s, background-color .33s ease;
+							.content figcaption{
+
+								background-color: map-get($colorScheme, '#{$color}-#{nth($colorShades,$i)}');
+							}
+
+						}
+					}
+
+					.os-theme-fourmi-e.os-host-transition>.os-scrollbar-horizontal>.os-scrollbar-track>.os-scrollbar-handle {
+						background: map-get($colorScheme, '#{$color}-#{nth($colorShades,$a)}');
+
+
+						&:hover {
+							background: map-get($colorScheme, '#{$color}-#{nth($colorShades,$h)}');
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// .bg-indigo-light {
+// 	.wp-block-fourmi-e-galerie {
+// 		.os-theme-fourmi-e.os-host-transition>.os-scrollbar-horizontal>.os-scrollbar-track>.os-scrollbar-handle {
+// 			background: $indigo-highlight;
+
+
+// 			&:hover {
+// 				background: $indigo-base;
+// 			}
+// 		}
+// 	}
+// }

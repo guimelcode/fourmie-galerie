@@ -1,0 +1,54 @@
+@import './variables';
+
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.editor-styles-wrapper {
+	.wp-block-fourmi-e-galerie {
+		overflow-x: scroll;
+		margin: 0;
+		max-width: 100%;
+
+		display: block;
+
+		.galerie-wrap {
+			display: grid;
+			grid-template-rows: 1fr;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 30vw));
+			gap: 20px;
+			figure {
+				margin: 0;
+				padding: 0;
+				display: block;
+				min-height: 200px;
+
+
+				img {
+				  display: block;
+				  width: 100%;
+				}
+
+			}
+			.block-editor-block-list__layout {
+				display: grid;
+				grid-template-rows: 1fr;
+
+				// grid-template-columns: repeat(auto-fit, 75vw);
+
+				// @media (min-width: map-get($breakpoints, md)) {
+				// 	grid-template-columns: repeat(auto-fit, 45vw);
+				// }
+				// @media (min-width: map-get($breakpoints, xl)) {
+				// 	grid-template-columns: repeat(auto-fit, 35vw);
+				// }
+
+				gap: 20px;
+				max-width: 100%;
+				margin: 0;
+			}
+		}
+	}
+
+}

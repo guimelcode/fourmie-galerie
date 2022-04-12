@@ -1,0 +1,33 @@
+{
+	"apiVersion": 2,
+	"name": "fourmi-e/galerie",
+	"version": "0.1.0",
+	"title": "Fourmie Galerie",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Block de galerie d'image, nécessite le block fourmie/image",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "fourmie-galerie",
+	"parent": [ "fourmi-e/conteneur" ],
+	"attributes": {
+		"blockId": {
+			"type": "string",
+			"default": null
+		},
+		"nbItem": {
+			"type": "number",
+			"default": 2
+		},
+		"sizeItem": {
+			"type": "number",
+			"default": 1
+		}
+	},
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css",
+	"enqueueScriptFooter": true,
+	"script": "file:./build/test2.js"
+}
