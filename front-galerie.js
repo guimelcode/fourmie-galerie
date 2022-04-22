@@ -1,20 +1,16 @@
 // console.log("hello world");
 
 $(document).ready(() => {
-	// console.log("hello world from Jquery");
-
-	// console.log($(this));
-
 	const galeries = $(".wp-block-fourmi-e-galerie");
 
-	const wrapPresentation = galeries.find(".wrap-presentation");
 	galeries.each(function () {
-		galerie($(this)[0], wrapPresentation);
+		galerie($(this)[0]);
 	});
 });
 
-const galerie = (block, wrapPresentation) => {
+const galerie = (block) => {
 	const thisBlock = $(block.firstChild);
+	const wrapPresentation = $(block).find(".wrap-presentation");
 	const variable = window[`block_${thisBlock.attr("id").replace(/-/g, "_")}`];
 	// console.log(
 	// 	"🚀 ~ file: test2.js ~ line 19 ~ galerie ~ wrapPresentation",

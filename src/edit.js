@@ -85,6 +85,7 @@ export default function Edit(props) {
 		template: BASE_TEMPLATE,
 		templateLoc: "insert",
 	});
+	setAttributes({ blockId: clientId });
 	return (
 		<>
 			<InspectorControls>
